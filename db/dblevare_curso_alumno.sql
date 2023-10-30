@@ -31,7 +31,7 @@ CREATE TABLE `curso_alumno` (
   KEY `fk_cursoAlumno_curso_idx` (`id_curso`),
   CONSTRAINT `fk_cursoAlumno_alumno` FOREIGN KEY (`id_alumno`) REFERENCES `alumno` (`id`),
   CONSTRAINT `fk_cursoAlumno_curso` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `curso_alumno` (
 
 LOCK TABLES `curso_alumno` WRITE;
 /*!40000 ALTER TABLE `curso_alumno` DISABLE KEYS */;
+INSERT INTO `curso_alumno` VALUES (3,1,3),(4,2,3),(5,3,4);
 /*!40000 ALTER TABLE `curso_alumno` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-30  9:43:18
+-- Dump completed on 2023-10-30 12:48:22

@@ -249,12 +249,11 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `readAlumnosofCurso`(IN _id_curso INT)
 BEGIN
-SELECT alumno.dni, alumno.nombre, alumno.apellido
-FROM curso
-INNER JOIN curso_alumno
-ON curso_alumno.id_curso = _id_curso
+SELECT alumno.dni,alumno.nombre,alumno.apellido 
+FROM curso_alumno
 INNER JOIN alumno
-ON alumno.id = curso_alumno.id_alumno;
+ON curso_alumno.id_alumno = alumno.id
+WHERE id_curso =_id_curso;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -419,4 +418,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-30  9:43:20
+-- Dump completed on 2023-10-30 12:48:24
