@@ -24,12 +24,15 @@ connection.connect(function(err) {
   console.log('connected as id ' + connection.threadId);
 });
 
-connection.query('SELECT 1', function (error, results, fields) {
-    if (error) throw error;
-    // connected!
-    connection.end();
-    console.log(results)
-});
+function cargarUsuario(tipo, usuario, contra){
+    connection.query(`CALL createUser(${tipo},${usuario}, ${contra})`, function (error, results, fields) {
+        if (error) throw error;
+        // connected!
+        connection.end();
+        console.log(results);
+    });
+}
+
 
 
 app.use(bodyParser.json());
