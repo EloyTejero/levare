@@ -27,13 +27,16 @@ connection.connect(function(err) {
 function cargarUsuario(tipo, usuario, contra){
     connection.query(`CALL createUser(${tipo},${usuario}, ${contra})`, function (error, results, fields) {
         if (error) throw error;
-        // connected!
         connection.end();
         console.log(results);
     });
 }
 
-
+app.post("/cu", (req, res) =>{
+  console.log(req.body);
+  const { tipo, usu, contra } = req.body;
+  cargarUsuario(tipo, usu , contra);
+});
 
 app.use(bodyParser.json());
 
