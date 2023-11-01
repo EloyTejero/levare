@@ -27,24 +27,58 @@ connection.connect(function(err) {
 function cargarUsuario(tipo, usuario, contra){
     connection.query(`CALL createUser(${tipo},${usuario}, ${contra})`, function (error, results, fields) {
         if (error) throw error;
-<<<<<<< HEAD
-=======
-        // connected!
->>>>>>> 1546ec047191c5773892bb7b29c559b86d5d2a15
         connection.end();
         console.log(results);
     });
 }
 
-<<<<<<< HEAD
+function checkearUsuario(usuario, contra){
+  connection.query(`CALL chequeoUsuario(${usuario}, ${contra})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
+function asignarCursoaUsuario(idCurso, idUsuario){
+  connection.query(`CALL asignarCursoaUsuario(${idCurso}, ${idUsuario})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
+function readCursosofUsuario(idUsuario){
+  connection.query(`CALL readCursosofUsuario(${idUsuario})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
 app.post("/cu", (req, res) =>{
   console.log(req.body);
   const { tipo, usu, contra } = req.body;
   cargarUsuario(tipo, usu , contra);
 });
-=======
 
->>>>>>> 1546ec047191c5773892bb7b29c559b86d5d2a15
+app.post("/checkuser", (req, res) =>{
+  console.log(req.body);
+  const { usu, contra } = req.body;
+  checkearUsuario(usu, contra);
+});
+
+app.post("/asignarCursoaUsuario", (req, res) =>{
+  console.log(req.body);
+  const { idCurso, idUsuario } = req.body;
+  asignarCursoaUsuario(idCurso, idUsuario);
+});
+
+app.post("/readCursosofUsuario", (req, res) =>{
+  console.log(req.body);
+  const { idUsuario } = req.body;
+  readCursosofUsuario(idUsuario);
+});
 
 app.use(bodyParser.json());
 
