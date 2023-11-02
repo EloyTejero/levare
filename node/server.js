@@ -55,6 +55,13 @@ function readCursosofUsuario(idUsuario){
       console.log(results);
   });
 }
+function verMaterias(){
+  connection.query(`CALL readAllSubjects()`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
 
 app.post("/cu", (req, res) =>{
   console.log(req.body);
@@ -78,6 +85,12 @@ app.post("/readCursosofUsuario", (req, res) =>{
   console.log(req.body);
   const { idUsuario } = req.body;
   readCursosofUsuario(idUsuario);
+});
+
+app.post("/verMaterias", (req, res) =>{
+  console.log(req.body);
+  //const { } = req.body;
+  verMaterias();
 });
 
 app.use(bodyParser.json());
