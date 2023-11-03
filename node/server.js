@@ -63,6 +63,62 @@ function verMaterias(){
   });
 }
 
+function verCursosdeunAlumno(idAlumno){
+  connection.query(`CALL readCoursesofAlumno(${idAlumno})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
+function verAnosdeCurso(ano){
+  connection.query(`CALL readCoursesofYear(${ano})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
+function cargarNota(idCursoAlumno ,  idMateria ,  idEtapa , idEstado ,  nota){
+  connection.query(`CALL createNota(${idCursoAlumno}, ${idMateria}, ${idEtapa}, ${idEstado}, ${nota})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
+function crearDivision(nombre, idCiclo){
+  connection.query(`CALL createDivision(${nombre}, ${idCiclo})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
+function crearCiclo(nombre){
+  connection.query(`CALL createCycle(${nombre})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
+function crearEtapa(nombre){
+  connection.query(`CALL createPhase(${nombre})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
+function cargarObservacion(idCursoAlumno, texto){
+  connection.query(`CALL createObservacion(${idCursoAlumno}, ${texto})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
 app.post("/cu", (req, res) =>{
   console.log(req.body);
   const { tipo, usu, contra } = req.body;
@@ -91,6 +147,49 @@ app.post("/verMaterias", (req, res) =>{
   console.log(req.body);
   //const { } = req.body;
   verMaterias();
+});
+
+app.post("/verCursosdeunAlumno", (req, res) =>{
+  console.log(req.body);
+  const { idAlumno } = req.body;
+  verCursosdeunAlumno(idAlumno);
+});
+
+app.post("/verAnosdeCurso", (req, res) =>{
+  console.log(req.body);
+  const { ano } = req.body;
+  verAnosdeCurso(ano);
+  
+});
+
+app.post("/cargarNota", (req, res) =>{
+  console.log(req.body);
+  const { idCursoAlumno ,  idMateria ,  idEtapa , idEstado ,  nota  } = req.body;
+  cargarNota(idCursoAlumno ,  idMateria ,  idEtapa , idEstado ,  nota);
+});
+
+app.post("/crearDivision", (req, res) =>{
+  console.log(req.body);
+  const { nombre, idCiclo } = req.body;
+  crearDivision(nombre, idCiclo);
+});
+
+app.post("/crearCiclo", (req, res) =>{
+  console.log(req.body);
+  const { nombre } = req.body;
+  crearCiclo(nombre);
+});
+
+app.post("/crearEtapa", (req, res) =>{
+  console.log(req.body);
+  const { nombre } = req.body;
+  crearEtapa(nombre);
+});
+
+app.post("/cargarObservacion", (req, res) =>{
+  console.log(req.body);
+  const { idCursoAlumno, texto } = req.body;
+  cargarObservacion(idCursoAlumno, texto);
 });
 
 app.use(bodyParser.json());
