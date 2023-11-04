@@ -40,6 +40,14 @@ function checkearUsuario(usuario, contra){
   });
 }
 
+function modificarUsuario(id, usu, contra){
+  connection.query(`CALL updateUser(${id}, ${usuario}, ${contra})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
 function asignarCursoaUsuario(idCurso, idUsuario){
   connection.query(`CALL asignarCursoaUsuario(${idCurso}, ${idUsuario})`, function (error, results, fields) {
       if (error) throw error;
@@ -119,6 +127,30 @@ function cargarObservacion(idCursoAlumno, texto){
   });
 }
 
+function crearAlumno(dni, nombre, apellido){
+  connection.query(`CALL createAlumno(${dni}, ${nombre}, ${apellido})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
+function leerAlumno(id){
+  connection.query(`CALL readAlumno(${id})`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
+function modificarAlumno(id, dni, nombre, apellido){
+  connection.query(`CALL updateAlumno(${id}, ${dni}, ${nombre}, ${apellido} )`, function (error, results, fields) {
+      if (error) throw error;
+      connection.end();
+      console.log(results);
+  });
+}
+
 app.post("/cu", (req, res) =>{
   console.log(req.body);
   const { tipo, usu, contra } = req.body;
@@ -129,6 +161,12 @@ app.post("/checkuser", (req, res) =>{
   console.log(req.body);
   const { usu, contra } = req.body;
   checkearUsuario(usu, contra);
+});
+
+app.post("/modificarUsuario", (req, res) =>{
+  console.log(req.body);
+  const { id, usu, contra } = req.body;
+  modificarUsuario(id, usu, contra);
 });
 
 app.post("/asignarCursoaUsuario", (req, res) =>{
@@ -190,6 +228,24 @@ app.post("/cargarObservacion", (req, res) =>{
   console.log(req.body);
   const { idCursoAlumno, texto } = req.body;
   cargarObservacion(idCursoAlumno, texto);
+});
+
+app.post("/crearAlumno", (req, res) =>{
+  console.log(req.body);
+  const { dni, nombre, apellido } = req.body;
+  crearAlumno(dni, nombre, apellido);
+});
+
+app.post("/leerAlumno", (req, res) =>{
+  console.log(req.body);
+  const { id } = req.body;
+  leerAlumno(id);
+});
+
+app.post("/modificarAlumno", (req, res) =>{
+  console.log(req.body);
+  const { id, dni, nombre, apellido } = req.body;
+  modificarAlumno(id, dni, nombre, apellido);
 });
 
 app.use(bodyParser.json());
