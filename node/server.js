@@ -28,9 +28,16 @@ async function dbcall(spname, args){
   });
 }
 
-app.post("/call/:spname/:args", (req, res) =>{
+app.post("/call/:uname/:upass/:spname/:args", (req, res) =>{
   const spname = req.params.spname.toString();
   const args = req.params.args.toString();
+  const uname = req.params.uname.toString();
+  const upass = req.params.upass.toString();
+  dbcall("chequeoUsuario",`${uname}, ${upass}`)
+  .then(resp =>{
+    res.send(resp);
+    console.log(resp); 
+  });
   dbcall(spname, args)
   .then(resp =>{
     res.send(resp);
