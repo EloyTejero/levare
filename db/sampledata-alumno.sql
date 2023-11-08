@@ -1,0 +1,121 @@
+use dblevare;
+INSERT INTO `alumno` (`nombre`,`apellido`,`dni`)
+VALUES
+  ("Maggie","Montoya",7872146),
+  ("Cruz","Collins",5758858),
+  ("Fatima","Wolf",8549088),
+  ("Paki","Nielsen",83263),
+  ("Rashad","Welch",2615702),
+  ("Aimee","Weeks",8015973),
+  ("Marshall","Stewart",4208158),
+  ("Vivien","Kline",5268871),
+  ("Gloria","English",437121),
+  ("Galena","Acevedo",2187427);
+INSERT INTO `alumno` (`nombre`,`apellido`,`dni`)
+VALUES
+  ("Richard","Shepard",2027593),
+  ("Melinda","Hyde",9760947),
+  ("Brody","Snyder",1248834),
+  ("Macon","Williams",4137170),
+  ("Edward","Fox",3133733),
+  ("Nicholas","Joseph",532620),
+  ("Yuli","Valentine",2312512),
+  ("Ainsley","Bernard",1565241),
+  ("Yardley","Nieves",3465749),
+  ("Kuame","Sutton",1926817);
+INSERT INTO `alumno` (`nombre`,`apellido`,`dni`)
+VALUES
+  ("Xanthus","Hughes",245157),
+  ("Hiram","Rodgers",5312590),
+  ("Lavinia","Vargas",9294219),
+  ("Athena","Travis",5925275),
+  ("Zachary","Strickland",8729180),
+  ("Daryl","Irwin",7293407),
+  ("Branden","Chavez",4219611),
+  ("Indigo","Johnston",7939580),
+  ("Kibo","Moreno",2641311),
+  ("Grant","Cantu",9525543);
+INSERT INTO `alumno` (`nombre`,`apellido`,`dni`)
+VALUES
+  ("Shay","Ortiz",582757),
+  ("Jelani","Chapman",5647172),
+  ("Xaviera","Cox",116672),
+  ("Brenden","Everett",6667905),
+  ("Inga","Cummings",7492734),
+  ("Amela","Daugherty",7053364),
+  ("Odette","Lester",9235880),
+  ("Bruce","Holden",5406647),
+  ("Mercedes","Ochoa",6759256),
+  ("Hakeem","Rodriquez",3976800);
+INSERT INTO `alumno` (`nombre`,`apellido`,`dni`)
+VALUES
+  ("Marah","Curtis",1180899),
+  ("Bethany","Case",4308165),
+  ("Kelly","Randall",8184338),
+  ("Abbot","Reid",6909988),
+  ("Nola","Mccormick",2834709),
+  ("Quintessa","Coleman",1785437),
+  ("Daryl","Benton",2966372),
+  ("Quinn","Fletcher",866550),
+  ("Roth","Anderson",3732526),
+  ("Christine","Hobbs",9596150);
+INSERT INTO `alumno` (`nombre`,`apellido`,`dni`)
+VALUES
+  ("Lee","Mendez",2982249),
+  ("Blake","Luna",3779509),
+  ("Yvette","Mcgowan",4945556),
+  ("Miriam","Dejesus",404259),
+  ("Tallulah","Hoffman",911707),
+  ("Kylie","Mcpherson",9401593),
+  ("Laith","Nelson",7467878),
+  ("Jason","Rocha",7443167),
+  ("Chava","Pollard",1323435),
+  ("Igor","Sparks",3944670);
+INSERT INTO `alumno` (`nombre`,`apellido`,`dni`)
+VALUES
+  ("Ignacia","Alvarez",1901305),
+  ("Charity","Morris",8899578),
+  ("Lunea","Duncan",3620802),
+  ("Caldwell","Workman",7650002),
+  ("Brynn","Buckley",984486),
+  ("Galvin","Little",5512983),
+  ("Quintessa","Wallace",7022886),
+  ("Jescie","Fry",5079207),
+  ("Gabriel","Dunlap",9512796),
+  ("Madeson","Salas",3058534);
+INSERT INTO `alumno` (`nombre`,`apellido`,`dni`)
+VALUES
+  ("Howard","Miranda",1005449),
+  ("Prescott","Richardson",9140421),
+  ("Raymond","Fitzgerald",3767902),
+  ("Simon","Rollins",5629251),
+  ("Mia","Travis",4203894),
+  ("Nyssa","Christian",4408774),
+  ("Candace","Preston",7889017),
+  ("Hector","Strickland",6396110),
+  ("Zeus","Beasley",4459059),
+  ("Carl","Buckley",1307213);
+INSERT INTO `alumno` (`nombre`,`apellido`,`dni`)
+VALUES
+  ("Nathaniel","Fisher",6946168),
+  ("Daryl","Deleon",8499821),
+  ("Unity","Pitts",2406661),
+  ("Grady","Gallegos",3297208),
+  ("Josiah","Becker",4506076),
+  ("Ariana","Brady",2366061),
+  ("Ivor","William",9593231),
+  ("Finn","Deleon",6586650),
+  ("Kimberly","Stevens",4865811),
+  ("Calista","Powell",8789468);
+INSERT INTO `alumno` (`nombre`,`apellido`,`dni`)
+VALUES
+  ("Lucian","Buck",6620912),
+  ("Tana","Wells",4500189),
+  ("Inga","Jacobs",9832169),
+  ("Heather","Joyce",9748729),
+  ("Shannon","Wallace",8057513),
+  ("Tad","Slater",1295922),
+  ("Camilla","Barr",8468912),
+  ("Gareth","Mckenzie",5515401),
+  ("Winifred","Burch",6385906),
+  ("Kenyon","Mathews",2805763);
