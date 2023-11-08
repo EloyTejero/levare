@@ -5,11 +5,13 @@ const port =  process.env.PORT || 3030;
 
 const app = express();
 
+app.use(bodyParser.json());
+
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   database : 'dblevare',
-  password : process.env.PDB
+  password : "password" 
 });
  
 connection.connect(function(err) {
@@ -21,28 +23,42 @@ connection.connect(function(err) {
   console.log('connected as id ' + connection.threadId);
 });
 
-async function dbcall(spname, args){
-   await connection.query(`CALL ${spname}(${args})`, function (error, results, fields) {
-      if (error) throw error;
-      return(results);
+function dbcall(spname, args) {
+  return new Promise((resolve, reject) => {
+    connection.query(`CALL ${spname}(${args})`, function (error, results, fields) {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
   });
 }
 
-app.post("/call/:uname/:upass/:spname/:args", (req, res) =>{
-  const spname = req.params.spname.toString();
-  const args = req.params.args.toString();
-  const uname = req.params.uname.toString();
-  const upass = req.params.upass.toString();
-  dbcall("chequeoUsuario",`${uname}, ${upass}`)
-  .then(resp =>{
-    res.send(resp);
-    console.log(resp); 
-  });
+app.post("/call", (req, res) =>{
+
+  const body = req.body;
+  console.log(body)
+  
+  const spname = body.spname.toString();
+  const args = body.args.toString();
+  const uname = body.uname.toString();
+  const upass = body.upass.toString();
+
+  dbcall("chequeoUsuario", `'${uname}', '${upass}'`)
+  .then((results1) => {
+    console.log(results1[0]);
+  })
+
   dbcall(spname, args)
-  .then(resp =>{
-    res.send(resp);
-    console.log(resp); 
-  });
+  .then((results2) => {
+    console.log(results2);
+  })
+  
+});
+
+app.get("/", (req, res) =>{
+  res.sendFile(__dirname + "/testing.html");
 });
 
 app.use(bodyParser.json());
