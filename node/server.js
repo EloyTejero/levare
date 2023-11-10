@@ -16,6 +16,7 @@ var connection = mysql.createConnection({
 
 
 let arrSP = [];
+let arrSPTutor = [];
  
 connection.connect(function(err) {
   if (err) {
@@ -29,11 +30,17 @@ connection.connect(function(err) {
 dbcall("readAllStoredProcedures", "")
 .then(resp => {
   resp[0].forEach(r => {
-    arrSP.push(r.Name);
+    arrSP.push(r.ROUTINE_NAME);
+    let primerasCuatroLetras = r.ROUTINE_NAME.substring(0, 3)
+    if ( primerasCuatroLetras === "read" || primerasCuatroLetras === "update"){
+      arrSPTutor.push(r.ROUTINE_NAME)
+    }
   });
+
+  console.log(arrSP);
 });
 
-console.log(arrSP);
+
 
 function dbcall(spname, args) {
   return new Promise((resolve, reject) => {
@@ -47,6 +54,25 @@ function dbcall(spname, args) {
   });
 }
 
+function getRolUsuario(nom, contra){
+  dbcall("chequeoUsuario", `'${nom}', '${contra}'`)
+  .then((id) => {
+    dbcall("readRol", `${id[0][0].id}`)
+    .then(resp => {
+      app.send(resp[0][0].nombre);
+    });
+  });
+}
+
+function getRolPorSPName(spname){
+  arrSPTutor.forEach(sp => {
+    if(sp === spname){
+      return "usuario"
+    }
+  });
+  return "administrador"
+}
+
 app.post("/call", (req, res) =>{
 
   const body = req.body;
@@ -56,27 +82,23 @@ app.post("/call", (req, res) =>{
   const uname = body.uname.toString();
   const upass = body.upass.toString();
 
-  dbcall("chequeoUsuario", `'${uname}', '${upass}'`)
-  .then((results1) => {
-    console.log(results1[0]);
-  })
-
-  dbcall(spname, args)
-  .then((results2) => {
-    console.log(results2);
-  })
-  
+  if (getRolUsuario(uname, upass) == getRolPorSPName){
+    dbcall(spname, args)
+    .then((results2) => {
+      app.send(results2[0]);
+    })
+  }
 });
 
 app.post("/checklogin", (req, res) =>{
+
+  const body = req.body;
+
+  const uname = body.uname.toString();
+  const upass = body.upass.toString();
+
   try{
-    dbcall("chequeoUsuario", `'${uname}', '${upass}'`)
-    .then((id) => {
-      dbcall("readRol", `${id[0][0].id}`)
-      .then(resp => {
-        console.log(resp[0][0].nombre);
-      });
-    });
+    getRolUsuario(uname, upass)
   }
   catch(error){
     app.send("Error")
@@ -84,7 +106,6 @@ app.post("/checklogin", (req, res) =>{
   }
   
 });
-
 
 app.get("/", (req, res) =>{
   res.sendFile(__dirname + "/testing.html");
