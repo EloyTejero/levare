@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   database : 'dblevare',
-  password : "" 
+  password :  'password'
 });
 
 
@@ -26,7 +26,7 @@ connection.connect(function(err) {
   console.log('connected as id ' + connection.threadId);
 });
 
-dbcall("readStoreProcedures", "")
+dbcall("readAllStoredProcedures", "")
 .then(resp => {
   resp[0].forEach(r => {
     arrSP.push(r.Name);
@@ -69,11 +69,22 @@ app.post("/call", (req, res) =>{
 });
 
 app.post("/checklogin", (req, res) =>{
-  dbcall("chequeoUsuario", `'${uname}', '${upass}'`)
-  .then((results1) => {
-    console.log(results1[0]);
-  })
+  try{
+    dbcall("chequeoUsuario", `'${uname}', '${upass}'`)
+    .then((id) => {
+      dbcall("readRol", `${id[0][0].id}`)
+      .then(resp => {
+        console.log(resp[0][0].nombre);
+      });
+    });
+  }
+  catch(error){
+    app.send("Error")
+    console.log("Hubo un error en el intento de logueo");
+  }
+  
 });
+
 
 app.get("/", (req, res) =>{
   res.sendFile(__dirname + "/testing.html");
@@ -82,6 +93,7 @@ app.get("/", (req, res) =>{
 app.use(bodyParser.json());
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`El server esta hosteado en http://localhost:${port}`);
 });
+  
 
