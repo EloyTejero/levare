@@ -11,8 +11,11 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   database : 'dblevare',
-  password : "password" 
+  password : "" 
 });
+
+
+let arrSP = [];
  
 connection.connect(function(err) {
   if (err) {
@@ -22,6 +25,15 @@ connection.connect(function(err) {
  
   console.log('connected as id ' + connection.threadId);
 });
+
+dbcall("readStoreProcedures", "")
+.then(resp => {
+  resp[0].forEach(r => {
+    arrSP.push(r.Name);
+  });
+});
+
+console.log(arrSP);
 
 function dbcall(spname, args) {
   return new Promise((resolve, reject) => {
@@ -38,8 +50,7 @@ function dbcall(spname, args) {
 app.post("/call", (req, res) =>{
 
   const body = req.body;
-  console.log(body)
-  
+    
   const spname = body.spname.toString();
   const args = body.args.toString();
   const uname = body.uname.toString();
@@ -55,6 +66,13 @@ app.post("/call", (req, res) =>{
     console.log(results2);
   })
   
+});
+
+app.post("/checklogin", (req, res) =>{
+  dbcall("chequeoUsuario", `'${uname}', '${upass}'`)
+  .then((results1) => {
+    console.log(results1[0]);
+  })
 });
 
 app.get("/", (req, res) =>{
