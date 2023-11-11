@@ -1,0 +1,97 @@
+.fondo-rec {
+  clip-path: inset(0 0 50% 0);
+  width: 100vw;
+  height: 100%;
+  background: rgb(70, 144, 187);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+}
+.contenedor-dni {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .borde {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+    border-radius: 10px;
+    width: 49vw;
+    background-color: rgba(54, 54, 54, 0.719);
+    padding-right: 50px;
+    .contenido-dni {
+      img {
+        width: 12vw;
+        margin-top: 20px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 15px;
+      }
+      h1 {
+        font-size: 60px;
+      }
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: column;
+      font-family: Poppins, sans-serif;
+      border-radius: 5px;
+      height: 60vh;
+      width: 50vw;
+      background-color: rgb(233, 233, 233);
+      .input {
+        height: 20vh;
+        width: 30vw;
+        /*   background-color: antiquewhite; */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        input {
+          border-radius: 5px;
+          font-size: 20px;
+          width: 15vw;
+          padding: 10px;
+          border: none;
+          height: 4vh;
+        }
+        button {
+          border-radius: 5px;
+          width: 10vw;
+          border: none;
+          height: 4vh;
+          background-color: black;
+          color: aliceblue;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1428px) {
+  .contenedor-dni {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  
+    .borde {
+       
+      width: 60vw;
+      
+      .contenido-dni {
+        width: 61vw;
+        h1{
+            text-align: center;
+        }
+      }
+    }
+  }
+}

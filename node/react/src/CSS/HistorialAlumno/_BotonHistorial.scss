@@ -1,0 +1,21 @@
+.botonHistorial{
+    height: 5vh;
+    width: 20vh;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+    transition: all 1s ease;
+  -webkit-box-shadow: 0px 0px 23px -2px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 23px -2px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 23px -2px rgba(0,0,0,0.75);
+
+    
+
+
+}
+}

@@ -1,0 +1,64 @@
+
+.SeleccionAlumno{
+    .fondoF{
+        clip-path: polygon(32% 0, 16% 56%, 29% 100%, 0 100%, 0% 50%, 0 0);
+        width: 100vw;
+        height: 100%;
+        background: rgba(70, 144, 187, 0.281);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: absolute;
+        z-index: -1;
+        bottom: 0;
+        right: 0;
+        
+    }
+    .fondoF2{
+        clip-path: polygon(100% 0, 100% 50%, 100% 100%, 73% 100%, 83% 48%, 73% 0);
+        width: 100vw;
+        height: 100%;
+        background: rgba(70, 144, 187, 0.281);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: absolute;
+        z-index: -1;
+        bottom: 0;
+        right: 0;
+    }
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    .contenedorS{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        width: 60vw;
+        height: 80vh;
+        border-radius: 10px;
+       
+        background-color: rgb(87, 128, 241);
+        h1{
+            color:white ;
+
+            font-size: 60px;
+        }
+        .ContCartas{
+            flex-wrap: wrap;
+            display: flex;
+            gap: 10px;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 100%;
+            height: 60vh;
+           
+        }
+    }
+}

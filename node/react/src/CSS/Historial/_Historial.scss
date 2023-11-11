@@ -1,0 +1,50 @@
+.contenedor-historial {
+  height: 95vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(236, 241, 245);
+  flex-direction: column;
+
+
+  .contenedor-cartas {
+ 
+    height: 83vh;
+    align-items: center;
+    width: 80vw;
+    flex-wrap: wrap;
+    align-items: center;
+    display: flex;
+ 
+    justify-content: center;
+    gap: 15px;
+    border-radius: 10px;
+    
+    background-color: rgba(252, 252, 252, 0.603);
+    overflow-y: scroll;
+    -webkit-box-shadow: 8px 1px 43px -7px rgba(197, 191, 191, 0.75);
+    -moz-box-shadow: 8px 1px 43px -7px rgba(190, 184, 184, 0.75);
+    box-shadow: 8px 1px 43px -7px rgba(189, 187, 187, 0.75);
+    .cartasH {
+      display: flex;
+      justify-content: center;
+      width: 10vw;
+      height: 20vh;
+      background-color: rgb(255, 255, 255);
+      border-radius: 7px;
+      font-size: 70px;
+      color: black;
+      align-items: center;
+      cursor: pointer;
+      transition: all 400ms ease;
+
+      &:hover {
+        -webkit-box-shadow: 8px 1px 66px -7px rgba(85, 80, 80, 0.75);
+        -moz-box-shadow: 8px 1px 66px -7px rgba(107, 102, 102, 0.75);
+        box-shadow: 8px 1px 66px -7px rgba(105, 102, 102, 0.75);
+        transform: translateY(-3%);
+      }
+    }
+  }
+}

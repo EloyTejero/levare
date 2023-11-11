@@ -1,0 +1,134 @@
+.circulo {
+  clip-path: circle(14.2% at 3% 98%);
+
+  width: 100vw;
+  height: 100vh;
+  background: rgb(70, 144, 187);
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+  .circulo-2 {
+    width: 100vw;
+    height: 100vh;
+    clip-path: circle(9.1% at 3% 98%);
+    background-color: aliceblue;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+  }
+}
+.circulo-3 {
+  clip-path: circle(13.1% at 98% 4%);
+  background: rgb(70, 144, 187);
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.circulo-4 {
+  clip-path: circle(3.6% at 13% 16%);
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(70, 144, 187);
+}
+.circulo-5 {
+  clip-path: circle(7.9% at 98% 96%);
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(70, 144, 187);
+}
+.contenedor-año {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  object-fit: cover;
+  height: 90vh;
+  width: 100%;
+  margin-top: 90px;
+  font-size: 40px;
+  &::before {
+    content: "";
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+
+    backdrop-filter: blur(4px);
+  }
+  .contenedor-cartas {
+    -webkit-box-shadow: 0px 2px 28px 3px rgb(143, 142, 143);
+    -moz-box-shadow: 0px 2px 28px 3px rgb(146, 142, 146);
+    box-shadow: 0px 2px 28px 3px rgb(139, 139, 139);
+    height: 83vh;
+    align-items: center;
+    width: 70vw;
+    flex-wrap: wrap;
+    align-items: center;
+    background: #206cb491;
+
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    border-radius: 10px;
+
+    .borde-carta {
+      height: 35vh;
+      width: 22vw;
+      background-color: #f3f3fbc0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .cartas {
+        border-radius: 10px;
+        height: 30vh;
+        width: 20vw;
+        font-size: 40px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 400ms ease;
+        color: black;
+        &:hover {
+          transform: translateY(-3%);
+          -webkit-box-shadow: -21px 7px 128px 5px rgba(176, 176, 176, 1);
+          -moz-box-shadow: -21px 7px 128px 5px rgba(176, 176, 176, 1);
+          box-shadow: -21px 7px 128px 5px rgba(176, 176, 176, 1);
+        }
+      }
+    }
+  }
+}
+@media (max-height: 1633px){
+  .contenedor-año {
+    height: 85vh;
+  }
+
+}
+/*  .circulo{
+    width: 100vw;
+    height: 100vh;
+    background: rgb(70, 144, 187);
+    clip-path: polygon(100% 25%, 13% 100%, 100% 100%);
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+  
+  
+  
+}  */

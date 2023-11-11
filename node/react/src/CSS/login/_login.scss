@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/* Login */
+.triangulo {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(70, 144, 187);
+
+  clip-path: polygon(100% 25%, 13% 100%, 100% 100%);
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+}
+
+.contenedor {
+  display: flex;
+  align-items: center;
+  -webkit-box-shadow: -21px 7px 128px 23px rgba(176, 176, 176, 1);
+  -moz-box-shadow: -21px 7px 128px 23px rgba(176, 176, 176, 1);
+  box-shadow: -21px 7px 128px 23px rgba(176, 176, 176, 1);
+ 
+  width: 55vw;
+  height: 60vh;
+  background: rgb(80, 115, 211);
+  color: #fff;
+ 
+  border-radius: 5px;
+  flex-direction: row;
+
+  h2 {
+    font-size: 45px;
+    text-align: center;
+  }
+  .input-box {
+    width: 100%;
+    height: 50px;
+    background: rgb(80, 115, 211);
+    margin: 30px 0;
+    position: relative;
+    
+  }
+  input {
+    width: 20vw;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(225, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #f8f8f8;
+    padding: 20px 45px 20px 20px;
+
+    &::placeholder {
+      color: #ffffff;
+    }
+  }
+  .i {
+    position: absolute;
+    right: 13px;
+    top: 0;
+    bottom: 0;
+    font-size: 20px;
+    transform: translateY(50%);
+  }
+  .btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    transition: all 400ms ease;
+
+    &:hover {
+      box-shadow: 5px 5px 20px gray;
+      transform: translateY(-3%);
+    }
+  }
+
+  .form {
+    display: flex;
+    border-left: 2px solid rgb(255, 255, 255);
+    height: 60vh;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding: 20px 45px;
+    flex-direction: column;
+    justify-content: space-evenly;
+   
+  }
+  .F-blanco {
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 50%;
+    background-color: #fff;
+    
+    img {
+      width: 10vw;
+
+      object-fit: contain;
+    }
+  }
+}
+
+
+
+.pagina-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  width: 100%;
+
+  h1 {
+    position: relative;
+    font-size: 80px;
+    /* top: -100px; */
+    font-family: Poppins, sans-serif;
+    top: -80px;
+  }
+  img {
+    width: 200px;
+    position: relative;
+    top: -60px;
+  }
+  .titulo {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+/* ///// */
+
+/* Años */
