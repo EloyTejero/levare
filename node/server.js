@@ -30,7 +30,7 @@ connection.connect(function(err) {
 
 dbcall("readCoursesofAlumno", 2)
 .then( resp =>{
-  console.log(resp);
+console.log(resp);
 });
 
 dbcall("readAllStoredProcedures", "")
@@ -93,7 +93,7 @@ function getRolPorSPName(spname){
     }
   });
   return "administrador"
-}
+} //duda
 
 app.post("/call", (req, res) =>{
 
