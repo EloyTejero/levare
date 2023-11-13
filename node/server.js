@@ -104,7 +104,7 @@ app.post("/call", (req, res) =>{
   const uname = body.uname.toString();
   const upass = body.upass.toString();
 
-  if (getRolUsuario(uname, upass) == getRolPorSPName){
+  if (getRolUsuario(uname, upass) == getRolPorSPName(spname)){//agregue el parametro de spname
     dbcall(spname, args)
     .then((results2) => {
       app.send(results2[0]);
