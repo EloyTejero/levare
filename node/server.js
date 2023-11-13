@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   database : 'dblevare',
-  password :  'password'
+  password :  ''
 });
 
 
@@ -27,6 +27,12 @@ connection.connect(function(err) {
   console.log('connected as id ' + connection.threadId);
 });
 
+
+dbcall("readCoursesofAlumno", 2)
+.then( resp =>{
+  console.log(resp);
+});
+
 dbcall("readAllStoredProcedures", "")
 .then(resp => {
   resp[0].forEach(r => {
@@ -40,7 +46,23 @@ dbcall("readAllStoredProcedures", "")
   console.log(arrSP);
 });
 
+function armarTabla(idcurso){
+  tabla = {};
+  dbcall("readAlumnosofCurso", idcurso)
+  .then( resp =>{
+    resp[0].forEach(alumno => {
+      dbcall("readNota", alumno.idcurso) //nombre de idcurso probablemente cambie
+      .then( notas =>{
+        console.log( notas[0][0]);
+      });
+    });
+    return tabla;
+  });
+}
 
+function desarmarTabla(idcurso){
+  
+}
 
 function dbcall(spname, args) {
   return new Promise((resolve, reject) => {
