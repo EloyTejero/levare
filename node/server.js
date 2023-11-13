@@ -129,6 +129,11 @@ app.post("/checklogin", (req, res) =>{
   
 });
 
+app.post("/segAcademico", (req, res) =>{
+  const { idcurso } = req.body;
+  armarTabla( idcurso );
+});
+
 app.get("/", (req, res) =>{
   res.sendFile(__dirname + "/testing.html");
 });
