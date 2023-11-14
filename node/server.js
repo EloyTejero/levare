@@ -47,10 +47,13 @@ dbcall("readAllStoredProcedures", "")
 });
 
 function armarTabla(idcurso){
-  tabla = {};
+  let tabla = [];
   dbcall("readAlumnosofCurso", idcurso)
   .then( resp =>{
     resp[0].forEach(alumno => {
+      var columna = {}
+      columna.nombre = alumno.nombre;
+       
       dbcall("readNota", alumno.idcurso) //nombre de idcurso probablemente cambie
       .then( notas =>{
         console.log( notas[0][0]);
@@ -120,7 +123,7 @@ app.post("/checklogin", (req, res) =>{
   const upass = body.upass.toString();
 
   try{
-    getRolUsuario(uname, upass)
+    app.send(getRolUsuario(uname, upass));
   }
   catch(error){
     app.send("Error")
