@@ -28,10 +28,7 @@ connection.connect(function(err) {
 });
 
 
-dbcall("readCoursesofAlumno", 2)
-.then( resp =>{
-console.log(resp);
-});
+armarTabla(3);
 
 dbcall("readAllStoredProcedures", "")
 .then(resp => {
@@ -42,23 +39,29 @@ dbcall("readAllStoredProcedures", "")
       arrSPTutor.push(r.ROUTINE_NAME)
     }
   });
-
-  console.log(arrSP);
 });
+
+function armarColumna(alumno){
+  
+}
 
 function armarTabla(idcurso){
   let tabla = [];
   dbcall("readAlumnosofCurso", idcurso)
   .then( resp =>{
     resp[0].forEach(alumno => {
-      var columna = {}
-      columna.nombre = alumno.nombre;
-       
-      dbcall("readNota", alumno.idcurso) //nombre de idcurso probablemente cambie
+      let columna = {};
+      columna.nombre = alumno.nombre + " " + alumno.apellido;
+
+      dbcall("readNota", alumno.id_curso_alumno)
       .then( notas =>{
-        console.log( notas[0][0]);
+        columna.notas = notas[0][0];
+        tabla.push(columna);
+        console.log(tabla);
       });
+
     });
+    
     return tabla;
   });
 }
@@ -134,7 +137,7 @@ app.post("/checklogin", (req, res) =>{
 
 app.post("/segAcademico", (req, res) =>{
   const { idcurso } = req.body;
-  armarTabla( idcurso );
+  app.send(armarTabla( idcurso )); 
 });
 
 app.get("/", (req, res) =>{
