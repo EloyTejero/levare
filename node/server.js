@@ -51,11 +51,22 @@ function armarTabla(idcurso){
   .then( resp =>{
     var itemProccesed = 0;
     resp[0].forEach((alumno, index, array) => {
-      nombre = alumno.nombre + " " + alumno.apellido;
       dbcall("readNota", alumno.id_curso_alumno)
-      .then( notas =>{
-        notas = notas[0][0];
-        tabla.push({nombre: nombre, notas: notas});
+      .then( listaNotas =>{
+        let columna = {};
+        let notas = [];
+        columna.nombre = alumno.nombre + " " + alumno.apellido;
+        listaNotas[0].forEach(nota => {
+          nota = {materia: nota.materia,
+          etapa: nota.etapa,
+          nota: nota.nota,
+          estado: nota.estado,
+          fecha: nota.fecha}
+          notas.push(nota);
+        });
+        console.log(notas);
+        columna.notas = notas;
+        tabla.push(columna)
         itemProccesed ++;
         if (itemProccesed === array.length){
           console.log(tabla);
