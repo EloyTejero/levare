@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   database : 'dblevare',
-  password :  ''
+  password :  'password'
 });
 
 
@@ -49,20 +49,20 @@ function armarTabla(idcurso){
   let tabla = [];
   dbcall("readAlumnosofCurso", idcurso)
   .then( resp =>{
-    resp[0].forEach(alumno => {
-      let columna = {};
-      columna.nombre = alumno.nombre + " " + alumno.apellido;
-
+    var itemProccesed = 0;
+    resp[0].forEach((alumno, index, array) => {
+      nombre = alumno.nombre + " " + alumno.apellido;
       dbcall("readNota", alumno.id_curso_alumno)
       .then( notas =>{
-        columna.notas = notas[0][0];
-        tabla.push(columna);
-        console.log(tabla);
+        notas = notas[0][0];
+        tabla.push({nombre: nombre, notas: notas});
+        itemProccesed ++;
+        if (itemProccesed === array.length){
+          console.log(tabla);
+          return tabla;
+        }
       });
-
     });
-    
-    return tabla;
   });
 }
 
